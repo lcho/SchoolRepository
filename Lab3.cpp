@@ -50,7 +50,7 @@ List::~List()
     while(!isEmpty())
     {
         remove(1);
-    }
+    }//end while
 }// end destructor
 
 
@@ -125,43 +125,43 @@ bool remove()
     if (success) {
         cout << "removed: " << *oneEmployee << endl;
         delete oneEmployee;             // could be inserted into another list
-    }
-    
-    
+    }//end if
+}//end remove
+
     
 //Edit
 bool retrieve()
-    {
-        Employee target("duck", "donald");
-        success = company1.retrieve(target, oneEmployee);
-        if (success) { cout << "Found in list:  " << *oneEmployee << endl;
-    }
+ {
+     Employee target("duck", "donald");
+     success = company1.retrieve(target, oneEmployee);
+     if (success) { cout << "Found in list:  " << *oneEmployee << endl;
+ }//end retrieve
         
         
         
 //Edit
 void merge()
-        {
-            // after this merge, company1 and company2 are empty,
-            // company3 contains all employees of company1 and company2
-            company3.merge(company1, company2);
-            // after merge, company3 is empty,
-            // company4 contains all employees of company3 and company4
-            company4.merge(company4, company3);
-        }
+ {
+     // after this merge, company1 and company2 are empty,
+     // company3 contains all employees of company1 and company2
+     company3.merge(company1, company2);
+     // after merge, company3 is empty,
+     // company4 contains all employees of company3 and company4
+     company4.merge(company4, company3);
+ }//end merge
         
         
         
 //Edit
 void intersect()
-        {
-            // after intersect, company1 and company2 are unchanged,
-            // company3 holds intersection of company1 and 2
-            company3.intersect(company1, company2);
-            // after intersect, company3 is unchanged,
-            // company4 holds the intersection of company3 and 4
-            company4.intersect(company3, company4);
-        }
+ {
+    // after intersect, company1 and company2 are unchanged,
+    // company3 holds intersection of company1 and 2
+    company3.intersect(company1, company2);
+    // after intersect, company3 is unchanged,
+    // company4 holds the intersection of company3 and 4
+    company4.intersect(company3, company4);
+ }//end intersect
         
         
 //Edit
@@ -177,8 +177,8 @@ ostream& operator<<(ostream &output, const IntSet& s) {
    for (int counter = 0; counter < s.size; counter++){
     if (s.set[counter] == true){
     output << counter << SPACE;
-        }
-      }
+        }//end if
+      }// end for
     output << CLOSE_BRACE;
    return output;
 } //end operator<<
@@ -193,15 +193,20 @@ bool isEmpty()
     return size == 0;
 }//end isEmpty
         
-void makeEmpty()
-        {
-            
-        }
+        
+        
+//Edit
+void makeEmpty(Link<T> set)
+    {
+        while (!isEmpty()) {
+            remove(1);
+        }//end while
+    }//end makeEmpty
         
 //----------------------------------------------------------------------------
 // operator=
 // overloaded =: assigning an IntSet object to another
-IntSet IntSet::operator=(const IntSet & assign){
+Link Link::operator=(const IntSet & assign){
   this->size = assign.size;
   for(int index = 0; index <= assign.size; index++){
   this->set[index] = assign.set[index];
@@ -216,7 +221,7 @@ IntSet IntSet::operator=(const IntSet & assign){
 //----------------------------------------------------------------------------
 // operator==
 // overloaded ==: addition of 2 IntSets
-bool IntSet::operator==(const IntSet & equal) const{
+bool Link::operator==(const IntSet & equal) const{
   if (size != equal.size){
           return false;
   }else{
@@ -232,7 +237,7 @@ bool IntSet::operator==(const IntSet & equal) const{
 //----------------------------------------------------------------------------
 // operator!=
 // overloaded !=: addition of 2 IntSets
-bool IntSet::operator!=(const IntSet & notEqual) const{
+bool Link::operator!=(const IntSet & notEqual) const{
  if (size == notEqual.size){
    return false;
      }else{
