@@ -1,4 +1,9 @@
-
+/**
+    @file Lab3.cpp
+    @author Lance Cho
+    @author Terence Schumacher
+    @version 0.1 (alpha)
+ */
 
 
 #include <iostream>
@@ -119,7 +124,6 @@ bool List::insert(int index, const ListItemType& newItem)
 //Edit
 bool remove()
 {
-    
     Employee target("duck", "donald");         // assume constructor exists
     success = company1.remove(target, oneEmployee);
     if (success) {
