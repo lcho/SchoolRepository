@@ -27,18 +27,18 @@ const string PTR_INSERT_SUCCESS = "Success: Insertion complete";
 template <typename T>
 class List
 {
-    //operator <<
-    //@brief output operator for class List, print data,
-    //       responsibility for output is left to object
-    //       stored in the list
-    friend ostream& operator<<(ostream& output, const List<T>& listToPrint)
-     {
-        Node* current = listToPrint.head;
-        while (current != NULL){
-            output << *current->data;       
-            current = current->next;
-        }//end while
-     }// end operator<< 
+//---------------------operator <<---------------------------------------
+//@brief output operator for class List, print data,
+//       responsibility for output is left to object
+//       stored in the list
+friend ostream& operator<<(ostream& output, const List<T>& listToPrint){
+    Node* current = listToPrint.head;
+    while (current != NULL){
+        output << *current->data;
+        current = current->next;
+    }//end while
+}// end operator<<
+
 public:
         List();                             //default constructor
         ~List();                            //destructor, not done
@@ -58,12 +58,12 @@ public:
         
         
 private:
-            struct Node {       // the node in a linked list
-                T* data;        // pointer to actual data, operation in T
-                Node* next;
-            };//end struct
+        struct Node {       // the node in a linked list
+            T* data;        // pointer to actual data, operation in T
+            Node* next;
+        };//end struct
             
-            Node* head;         // pointer to first node in list
+        Node* head;         // pointer to first node in list
 };//end List
 
 
@@ -78,6 +78,7 @@ List<T>::List(){
     head = NULL;
 }//end List
 
+//--------------------------Destructor-----------------------------------
 //destructor, not done
 List<T>::~List(){
     
@@ -85,6 +86,7 @@ List<T>::~List(){
     
 }//end ~List
 
+//----------------------Copy Constructor---------------------------------
 //copy constructor, not done
 List(const List& ){
     
@@ -92,6 +94,9 @@ List(const List& ){
     
     }//end cpyCnstr
 
+
+
+//---------------------------buildList-----------------------------------
 //build list from data file
 template <typename T>
 void List<T>::buildList(ifstream& infile){
@@ -164,6 +169,8 @@ bool List<T>::insert(T* dataPtr ){
 }//end insert
 
 
+
+//----------------------------remove-------------------------------------
 //remove one Node from list, not done
 // I don't know if this is correct or not
 //@Terence
@@ -178,6 +185,8 @@ bool List<T>::remove(T data, T* dataPtr){
     }//end if
     }//end remove
 
+
+//----------------------------retrieve-----------------------------------
 //grab one Node from list, not done
 bool retrieve(T* ){
     
@@ -185,6 +194,9 @@ bool retrieve(T* ){
     
 }//end retrieve
 
+
+
+//-----------------------------merge-------------------------------------
 //combines two sorted lists into one list, not done
 void merge(const List& firstList, const List& secondList){
     
@@ -192,6 +204,8 @@ void merge(const List& firstList, const List& secondList){
     
 }//end merge
 
+
+//----------------------------intersect-----------------------------------
 //finds common elements in both
 //lists and creates new list, not done
 void intersect(const List& firstList, const List& secondList){
@@ -211,7 +225,9 @@ bool List<T>::isEmpty() const
     return head == NULL;
 }//end isEmpty
 
-    
+
+
+//-------------------------makeEmpty------------------------------------
 //empty out list, deallocate memory, not done
 void makeEmpty(const List& ){}//end makeEmpty
 
@@ -222,6 +238,8 @@ List List::operator=(const List& secondList) const{
     
     }//end operator=
 
+
+//-------------------------operator==----------------------------------
 //determine equality, not done
 bool List::operator==(const List& secondList) const{
     
@@ -229,6 +247,8 @@ bool List::operator==(const List& secondList) const{
     
     }//end operator==
 
+
+//-------------------------operator!=-----------------------------------
 //determine inequality, not done
 bool List::operator!=(const List& secondList) const{
     
