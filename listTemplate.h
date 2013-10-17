@@ -117,28 +117,11 @@ List<T>::List(const List& aList) : size(aList.size) {
 //build list from data file
 template <typename T>
 void List<T>::buildList(ifstream& infile){
-    T* ptr;
-    bool successfulRead;            //read good data
-    bool success;                   // successfully insert
-    
-    for (;;){
-        ptr = new T;
-        successfulRead = ptr->setData(infile);      //fill the T object
-        if (infile.eof()) {
-            delete ptr;
-            break;
-        }//end if
-        
-        if (successfulRead){
-            success = insert(ptr);      //insert method?
-             size++;
-        }
-        else {
-            delete ptr;
-        }//end if 2
-        if (!success)
-            break;
-    }//end for
+    T* toInsert;
+    while (! infile.eof()){
+        toInsert->setData(infile);
+        insert(infile);
+    }//end while
     
 }//end buildList
 
