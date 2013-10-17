@@ -47,8 +47,8 @@ public:
         List(const List& );                 //copy constructor, not done
         void buildList(ifstream& );         //build list from data file
         bool insert(T* );                   //insert one Node into list
-        bool remove(T* );                   //remove one Node from list, not done
-        bool retrieve(T* );                 //grab one Node from list, not done
+        bool remove(T,T*);                   //remove one Node from list, not done
+        bool retrieve(T,T*);                 //grab one Node from list, not done
         void merge(const List& firstList, const List& secondList);  //combines two sorted lists into one list, not done
         void intersect(const List& firstList, const List& secondList); //finds common elements in both
                                                                        //lists and creates new list, not done
@@ -262,11 +262,61 @@ bool List<T>::remove(T data, T* dataPtr){
 
 
 //----------------------------retrieve-----------------------------------
-//grab one Node from list, not done
-bool retrieve(T* ){
-    
-    //Enter data here
-    
+//grab one Node from list
+bool List<T>::retrieve(T data, T* dataPtr){
+    // Check to see if list is empty
+    if (head==NULL)
+        return false;
+    // Check to see if only one element in the list
+    else if(size == ONE){
+        // the data == *head->data
+        if(data == *head->data){
+            dataPtr = head;
+            return true;
+            // return false if data != *head->data
+        }else
+            return false;
+        
+        //Check if there are only 2 elements in the list
+    }else if(size==TWO){
+        Node* current = head->next;
+        Node* previous = head;
+        if(data==current->data){
+            dataPtr = current->data;
+            return true;
+        } // end if data == current-> data
+        if(data==previous->data){
+            dataPtr = previous->data;
+            return true;
+        } // end if data == previous->data
+        
+        // Return false if data != first and second elements in the list
+        return false;
+        
+    }else{
+        Node* current = head->next;
+        Node* previous = head;
+        // remove data if it's equal to the previous
+        if (previous->data==data){
+            dataPtr = previous->data;
+            return true;
+        }
+        // the data != previous, check current element
+        while(current != NULL){
+            // data == current->data
+            if(current->data == data){
+                dataPtr = current->data;
+                return true;
+            }
+            // the data != current->data
+            else{
+                current = current->next;    // current points to the next element
+                previous = previous->next;  // previous points to where current was pointing
+            }
+        }
+        // data != any elements in the list
+        return false;
+    } // end else list has > 2 elements
 }//end retrieve
 
 //-----------------------------merge-------------------------------------
