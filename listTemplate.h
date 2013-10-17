@@ -65,16 +65,11 @@ private:
             Node* next;
         };//end struct
             
-<<<<<<< HEAD
-<<<<<<< HEAD
+
             Node* head;         // pointer to first node in list
             int size;
-=======
-        Node* head;         // pointer to first node in list
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
-=======
-        Node* head;         // pointer to first node in list
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
+
+
 };//end List
 
 
@@ -90,15 +85,8 @@ List<T>::List(){
     size = 0;
 }//end List
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-//---------------------destructor-----------------------------------------
-=======
+
 //--------------------------Destructor-----------------------------------
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
-=======
-//--------------------------Destructor-----------------------------------
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //destructor, not done
 template <typename T>
 List<T>::~List(){
@@ -107,8 +95,6 @@ List<T>::~List(){
     
 }//end ~List
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 //---------------------------copy-constructor-----------------------------
 template <typename T>
 List<T>::List(const List& aList) : size(aList.size) {
@@ -136,27 +122,7 @@ List<T>::List(const List& aList) : size(aList.size) {
 }// end copy constructor
 
 
-//---------------------buildList------------------------------------------
-=======
-=======
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
-//----------------------Copy Constructor---------------------------------
-//copy constructor, not done
-template <typename T>
-List<T>::List(const List& copyData){
-    List(copyData);
-}//end cpyCnstr
-
-<<<<<<< HEAD
-
-
 //---------------------------buildList-----------------------------------
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
-=======
-
-
-//---------------------------buildList-----------------------------------
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //build list from data file
 template <typename T>
 void List<T>::buildList(ifstream& infile){
@@ -228,17 +194,7 @@ bool List<T>::insert(T* dataPtr ){
     cout << PTR_INSERT_SUCCESS << endl; //succes message
     return true;
 }//end insert
-
-<<<<<<< HEAD
-//---------------------remove -------------------------------------------
-=======
-
-
 //----------------------------remove-------------------------------------
-<<<<<<< HEAD
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
-=======
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //remove one Node from list, not done
 // I don't know if this is correct or not
 //@Terence
@@ -253,17 +209,8 @@ bool List<T>::remove(T data, T* dataPtr){
     }//end if
     }//end remove
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-//---------------------retrieve-------------------------------------------
-=======
 
 //----------------------------retrieve-----------------------------------
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
-=======
-
-//----------------------------retrieve-----------------------------------
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //grab one Node from list, not done
 bool retrieve(T* ){
     
@@ -271,19 +218,7 @@ bool retrieve(T* ){
     
 }//end retrieve
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-//---------------------merge----------------------------------------------
-=======
-
-
 //-----------------------------merge-------------------------------------
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
-=======
-
-
-//-----------------------------merge-------------------------------------
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //combines two sorted lists into one list, not done
 template <typename T>
 void merge(const List& firstList, const List& secondList){
@@ -292,17 +227,7 @@ void merge(const List& firstList, const List& secondList){
     
 }//end merge
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-//---------------------intersect------------------------------------------
-=======
-
 //----------------------------intersect-----------------------------------
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
-=======
-
-//----------------------------intersect-----------------------------------
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //finds common elements in both
 //lists and creates new list, not done
 template <typename T>
@@ -323,36 +248,13 @@ bool List<T>::isEmpty() const
     return head == NULL;
 }//end isEmpty
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-//---------------------makeEmpty------------------------------------------
-=======
-
-
 //-------------------------makeEmpty-------------------------------------
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
-=======
-
-
-//-------------------------makeEmpty-------------------------------------
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //empty out list, deallocate memory, not done
 template <typename T>
 void makeEmpty(const List& ){}//end makeEmpty
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-//---------------------operator=------------------------------------------
-=======
-
 
 //-------------------------operator=-------------------------------------
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
-=======
-
-
-//-------------------------operator=-------------------------------------
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //assings one list to another, not done
 template <typename T>
 List List::operator=(const List& secondList) const{
@@ -360,17 +262,7 @@ List List::operator=(const List& secondList) const{
     //Enter data here
     
     }//end operator=
-<<<<<<< HEAD
-    
-//---------------------operator==-----------------------------------------
-=======
-
-
 //-------------------------operator==----------------------------------
-<<<<<<< HEAD
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
-=======
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //determine equality, not done
 template <typename T>
 bool List::operator==(const List& secondList) const{
@@ -379,17 +271,7 @@ bool List::operator==(const List& secondList) const{
     
     }//end operator==
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-//---------------------operator!=-----------------------------------------
-=======
-
 //-------------------------operator!=-----------------------------------
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
-=======
-
-//-------------------------operator!=-----------------------------------
->>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //determine inequality, not done
 template <typename T>
 bool List::operator!=(const List& secondList) const{
