@@ -187,19 +187,78 @@ bool List<T>::insert(T* dataPtr ){
     return true;
 }//end insert
 //----------------------------remove-------------------------------------
-//remove one Node from list, not done
-// I don't know if this is correct or not
-//@Terence
+//remove one Node from list
 template<typename T>
 bool List<T>::remove(T data, T* dataPtr){
-    T target(data);
-    success = List.remove(targetData, dataPtr);
-    if(success){
+    // Check to see if list is empty
+    if (head==NULL)
+        return false;
+    // Check to see if only one element in the list
+    else if(size == ONE){
+        // data == *head->data
+        if(data == *head->data){
+            dataPtr = head;
+            delete head;
+            head = NULL;
+            return true;
+            // return false if data != *head->data
+        }else
+            return false;
         
-        cout << "Removed: " << *dataPtr << endl;
-        delete dataPtr;         //could be inserted into another list
-    }//end if
-    }//end remove
+        //Check if there are only 2 elements in the list
+    }else if(size==TWO){
+        Node* current = head->next;
+        Node* previous = head;
+        if(data==current->data){
+            dataPtr = current->data;
+            delete current->data;
+            previous->next = NULL;
+            current = NULL;
+            return true;
+        } // end if data == current-> data
+        if(data==previous->data){
+            head = current;
+            dataPtr = previous->data;
+            delete previous;
+            previous = NULL;
+            return true;
+        } // end if data == previous->data
+        
+        // Return false if data != first and second elements in the list
+        return false;
+        
+    }else{
+        Node* current = head->next;
+        Node* previous = head;
+        // remove data if it's equal to the previous
+        if (previous->data==data){
+            head = current;
+            dataPtr = previous->data;
+            delete previous;
+            previous = NULL;
+            return true;
+        }
+        // the data != previous, check current element
+        while(current != NULL){
+            // data == current->data
+            if(current->data == data){
+                previous->next = previous->next->next;
+                dataPtr = current->data; // grab the data to be removed
+                delete current;
+                current = NULL;
+                previous = NULL;
+                return true;
+            }
+            // the data != current->data
+            else{
+                current = current->next;    // current points to the next element
+                previous = previous->next;  // previous points to where current was pointing
+            }
+        }
+        // data != any elements in the list
+        return false;
+    } // end else list has > 2 elements
+}//end remove
 
 
 //----------------------------retrieve-----------------------------------
