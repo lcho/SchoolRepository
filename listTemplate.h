@@ -79,11 +79,11 @@ List<T>::List(){
 }//end List
 
 //destructor, not done
-~List(){
+List<T>::~List(){
     
     //Enter data here
     
-    }//end ~List
+}//end ~List
 
 //copy constructor, not done
 List(const List& ){
