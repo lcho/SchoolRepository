@@ -80,6 +80,7 @@ List<T>::List(){
 
 //--------------------------Destructor-----------------------------------
 //destructor, not done
+template <typename T>
 List<T>::~List(){
     
     //Enter data here
@@ -88,11 +89,10 @@ List<T>::~List(){
 
 //----------------------Copy Constructor---------------------------------
 //copy constructor, not done
-List(const List& ){
-    
-    //Enter data here
-    
-    }//end cpyCnstr
+template <typename T>
+List<T>::List(const List& copyData){
+    List(copyData);
+}//end cpyCnstr
 
 
 
@@ -198,6 +198,7 @@ bool retrieve(T* ){
 
 //-----------------------------merge-------------------------------------
 //combines two sorted lists into one list, not done
+template <typename T>
 void merge(const List& firstList, const List& secondList){
     
     //Enter data here
@@ -208,6 +209,7 @@ void merge(const List& firstList, const List& secondList){
 //----------------------------intersect-----------------------------------
 //finds common elements in both
 //lists and creates new list, not done
+template <typename T>
 void intersect(const List& firstList, const List& secondList){
     
     //Enter data here
@@ -227,11 +229,16 @@ bool List<T>::isEmpty() const
 
 
 
-//-------------------------makeEmpty------------------------------------
+//-------------------------makeEmpty-------------------------------------
 //empty out list, deallocate memory, not done
+template <typename T>
 void makeEmpty(const List& ){}//end makeEmpty
 
+
+
+//-------------------------operator=-------------------------------------
 //assings one list to another, not done
+template <typename T>
 List List::operator=(const List& secondList) const{
     
     //Enter data here
@@ -241,6 +248,7 @@ List List::operator=(const List& secondList) const{
 
 //-------------------------operator==----------------------------------
 //determine equality, not done
+template <typename T>
 bool List::operator==(const List& secondList) const{
     
     //Enter data here
@@ -250,6 +258,7 @@ bool List::operator==(const List& secondList) const{
 
 //-------------------------operator!=-----------------------------------
 //determine inequality, not done
+template <typename T>
 bool List::operator!=(const List& secondList) const{
     
     //Enter data here
