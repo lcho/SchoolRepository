@@ -61,10 +61,10 @@ private:
             struct Node {       // the node in a linked list
                 T* data;        // pointer to actual data, operation in T
                 Node* next;
-            }//end struct
+            };//end struct
             
             Node* head;         // pointer to first node in list
-}//end List
+};//end List
 
 
 
@@ -93,11 +93,31 @@ List(const List& ){
     }//end cpyCnstr
 
 //build list from data file
-void buildList(ifstream& ){
+template <typename T>
+void List<T>::buildList(ifstream& infile){
+    T* ptr;
+    bool successfulRead;            //read good data
+    bool success;                   // successfully insert
     
-    //Enter data here
+    for (;;){
+        ptr = new T;
+        successfulRead = ptr->setData(infile);      //fill the T object
+        if (infile.eof()) {
+            delete ptr;
+            break;
+        }//end if
+        
+        if (successfulRead){
+            success = insert(ptr);      //insert method?
+        }
+        else {
+            delete ptr;
+        }//end if 2
+        if (!success)
+            break;
+    }//end for
     
-    }//end buildList
+}//end buildList
 
 
 //---------------------insert--------------------------------------------
@@ -106,13 +126,14 @@ void buildList(ifstream& ){
 // @param[in] dataPtr
 // @return true if node is inserted correctly
 //@Terence
+template <typename T>
 bool List<T>::insert(T* dataPtr ){
     
     Node* ptr = new Node;
     if (ptr == NULL) {
         cout << PTR_INSERT_FAILURE << endl; //error message
-        return false;}  //there is no pointer 
-
+        return false;}  //there is no pointer
+    
     ptr->data = dataPtr;
     
     // if the list is empty or if the node should be inserted before
@@ -151,6 +172,7 @@ bool List<T>::remove(T data, T* dataPtr){
     T target(data);
     success = List.remove(targetData, dataPtr);
     if(success){
+        
         cout << "Removed: " << *dataPtr << endl;
         delete dataPtr;         //could be inserted into another list
     }//end if
@@ -184,9 +206,11 @@ void intersect(const List& firstList, const List& secondList){
 // @return true if linked list is empty
 //@Terence
 template <typename T>
-bool List<T>::isEmpty() const{
+bool List<T>::isEmpty() const
+{
     return head == NULL;
-    }//end isEmpty
+}//end isEmpty
+
     
 //empty out list, deallocate memory, not done
 void makeEmpty(const List& ){}//end makeEmpty
