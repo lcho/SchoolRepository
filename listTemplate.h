@@ -23,22 +23,24 @@ using namespace std;
 const string PTR_INSERT_FAILURE = "Failed: Error inserting pointer";
 const string PTR_INSERT_SUCCESS = "Success: Insertion complete";
 
+
+
 //This file should contain all class def and function code
 template <typename T>
 class List
 {
-    //operator <<
-    //@brief output operator for class List, print data,
-    //       responsibility for output is left to object
-    //       stored in the list
-    friend ostream& operator<<(ostream& output, const List<T>& listToPrint)
-     {
-        Node* current = listToPrint.head;
-        while (current != NULL){
-            output << *current->data;       
-            current = current->next;
-        }//end while
-     }// end operator<< 
+//---------------------operator <<---------------------------------------
+//@brief output operator for class List, print data,
+//       responsibility for output is left to object
+//       stored in the list
+friend ostream& operator<<(ostream& output, const List<T>& listToPrint){
+    Node* current = listToPrint.head;
+    while (current != NULL){
+        output << *current->data;
+        current = current->next;
+    }//end while
+}// end operator<<
+
 public:
         List();                             //default constructor
         ~List();                            //destructor, not done
@@ -58,12 +60,17 @@ public:
         
         
 private:
-            struct Node {       // the node in a linked list
-                T* data;        // pointer to actual data, operation in T
-                Node* next;
-            };//end struct
+        struct Node {       // the node in a linked list
+            T* data;        // pointer to actual data, operation in T
+            Node* next;
+        };//end struct
             
+<<<<<<< HEAD
             Node* head;         // pointer to first node in list
+            int size;
+=======
+        Node* head;         // pointer to first node in list
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 };//end List
 
 
@@ -76,22 +83,63 @@ private:
 template <typename T>
 List<T>::List(){
     head = NULL;
+    size = 0;
 }//end List
 
+<<<<<<< HEAD
+//---------------------destructor-----------------------------------------
+=======
+//--------------------------Destructor-----------------------------------
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //destructor, not done
-~List(){
+template <typename T>
+List<T>::~List(){
     
     //Enter data here
     
-    }//end ~List
+}//end ~List
 
+<<<<<<< HEAD
+//---------------------------copy-constructor-----------------------------
+template <typename T>
+List<T>::List(const List& aList) : size(aList.size) {
+    
+    if (aList.head == NULL){
+        head = NULL;    //original list is empty
+    }
+    else
+    {   //copying of first node
+        head = new Node;
+        head->data = aList.head->data;
+        
+        //continue copying the rest of the data
+        Node *newPtr = head;    //new list pointer
+        //newPtr points to last node in new list
+        //origPtr points to nodes in original list
+        for (Node *origPtr = aList.head->next;
+             origPtr != NULL;
+             origPtr = origPtr->next) {
+            newPtr->next = new Node;
+            newPtr->data = origPtr->data;
+        }//end for
+        newPtr->next = NULL;
+    }//end if
+}// end copy constructor
+
+
+//---------------------buildList------------------------------------------
+=======
+//----------------------Copy Constructor---------------------------------
 //copy constructor, not done
-List(const List& ){
-    
-    //Enter data here
-    
-    }//end cpyCnstr
+template <typename T>
+List<T>::List(const List& copyData){
+    List(copyData);
+}//end cpyCnstr
 
+
+
+//---------------------------buildList-----------------------------------
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //build list from data file
 template <typename T>
 void List<T>::buildList(ifstream& infile){
@@ -109,6 +157,7 @@ void List<T>::buildList(ifstream& infile){
         
         if (successfulRead){
             success = insert(ptr);      //insert method?
+             size++;
         }
         else {
             delete ptr;
@@ -163,7 +212,13 @@ bool List<T>::insert(T* dataPtr ){
     return true;
 }//end insert
 
+<<<<<<< HEAD
+//---------------------remove -------------------------------------------
+=======
 
+
+//----------------------------remove-------------------------------------
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //remove one Node from list, not done
 // I don't know if this is correct or not
 //@Terence
@@ -178,6 +233,12 @@ bool List<T>::remove(T data, T* dataPtr){
     }//end if
     }//end remove
 
+<<<<<<< HEAD
+//---------------------retrieve-------------------------------------------
+=======
+
+//----------------------------retrieve-----------------------------------
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //grab one Node from list, not done
 bool retrieve(T* ){
     
@@ -185,22 +246,37 @@ bool retrieve(T* ){
     
 }//end retrieve
 
+<<<<<<< HEAD
+//---------------------merge----------------------------------------------
+=======
+
+
+//-----------------------------merge-------------------------------------
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //combines two sorted lists into one list, not done
+template <typename T>
 void merge(const List& firstList, const List& secondList){
     
     //Enter data here
     
 }//end merge
 
+<<<<<<< HEAD
+//---------------------intersect------------------------------------------
+=======
+
+//----------------------------intersect-----------------------------------
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //finds common elements in both
 //lists and creates new list, not done
+template <typename T>
 void intersect(const List& firstList, const List& secondList){
     
     //Enter data here
     
 }//end intersect
 
-//-----------------------isEmpty-----------------------------------------
+//-----------------------isEmpty------------------------------------------
 // @brief isEmpty
 // @description check list for values ------> this is suspicious
 // @return true if linked list is empty
@@ -211,30 +287,68 @@ bool List<T>::isEmpty() const
     return head == NULL;
 }//end isEmpty
 
-    
+<<<<<<< HEAD
+//---------------------makeEmpty------------------------------------------
+=======
+
+
+//-------------------------makeEmpty-------------------------------------
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //empty out list, deallocate memory, not done
+template <typename T>
 void makeEmpty(const List& ){}//end makeEmpty
 
+<<<<<<< HEAD
+//---------------------operator=------------------------------------------
+=======
+
+
+//-------------------------operator=-------------------------------------
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //assings one list to another, not done
+template <typename T>
 List List::operator=(const List& secondList) const{
     
     //Enter data here
     
     }//end operator=
+<<<<<<< HEAD
+    
+//---------------------operator==-----------------------------------------
+=======
 
+
+//-------------------------operator==----------------------------------
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //determine equality, not done
+template <typename T>
 bool List::operator==(const List& secondList) const{
     
     //Enter data here
     
     }//end operator==
 
+<<<<<<< HEAD
+//---------------------operator!=-----------------------------------------
+=======
+
+//-------------------------operator!=-----------------------------------
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //determine inequality, not done
+template <typename T>
 bool List::operator!=(const List& secondList) const{
     
     //Enter data here
     
-    }//end operator!= 
+    }//end operator!=
+    
+//---------------------------getLength------------------------------------
+//size of the linked list
+template <typename T>
+int List<T>::getLength()
+{
+    return size;
+}
 
 
  #endif
