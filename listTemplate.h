@@ -183,6 +183,7 @@ bool List<T>::insert(T* dataPtr ){
     }//end if
     
     cout << PTR_INSERT_SUCCESS << endl; //succes message
+    size++;
     return true;
 }//end insert
 //----------------------------remove-------------------------------------
