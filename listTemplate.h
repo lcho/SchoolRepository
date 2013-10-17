@@ -200,6 +200,7 @@ bool List<T>::remove(T data, T* dataPtr){
             dataPtr = head;
             delete head;
             head = NULL;
+            size--;
             return true;
             // return false if data != *head->data
         }else
@@ -214,6 +215,7 @@ bool List<T>::remove(T data, T* dataPtr){
             delete current->data;
             previous->next = NULL;
             current = NULL;
+            size--;
             return true;
         } // end if data == current-> data
         if(data==previous->data){
@@ -221,6 +223,7 @@ bool List<T>::remove(T data, T* dataPtr){
             dataPtr = previous->data;
             delete previous;
             previous = NULL;
+            size--;
             return true;
         } // end if data == previous->data
         
@@ -236,6 +239,7 @@ bool List<T>::remove(T data, T* dataPtr){
             dataPtr = previous->data;
             delete previous;
             previous = NULL;
+            size--;
             return true;
         }
         // the data != previous, check current element
@@ -247,6 +251,7 @@ bool List<T>::remove(T data, T* dataPtr){
                 delete current;
                 current = NULL;
                 previous = NULL;
+                size--;
                 return true;
             }
             // the data != current->data
