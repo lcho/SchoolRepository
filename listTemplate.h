@@ -98,27 +98,18 @@ List<T>::~List(){
 //---------------------------copy-constructor-----------------------------
 template <typename T>
 List<T>::List(const List& aList) : size(aList.size) {
+    Node* current = aList.head;     // Looking at the head of the linked list that needs to be copied
+    Node* ourPtr = head;            // ourPtr is pointing to the head of the new linked list where data is going to be copied
     
-    if (aList.head == NULL){
-        head = NULL;    //original list is empty
+    while(current != NULL){
+        ourPtr = new Node();        // creates a new node in the new linked list
+        ourPtr->data = new T(*current->data);   // copied the first data from aList linked list
+        ourPtr->next = NULL;
+        ourPtr = ourPtr->next;      // ourPtr moves to the next node of the new linked list
+        // (to copy the next data if there is any)
+        current = current->next;    // pointer on aList linked list moves to the second data
     }
-    else
-    {   //copying of first node
-        head = new Node;
-        head->data = aList.head->data;
-        
-        //continue copying the rest of the data
-        Node *newPtr = head;    //new list pointer
-        //newPtr points to last node in new list
-        //origPtr points to nodes in original list
-        for (Node *origPtr = aList.head->next;
-             origPtr != NULL;
-             origPtr = origPtr->next) {
-            newPtr->next = new Node;
-            newPtr->data = origPtr->data;
-        }//end for
-        newPtr->next = NULL;
-    }//end if
+   
 }// end copy constructor
 
 
