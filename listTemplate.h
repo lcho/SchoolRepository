@@ -66,8 +66,12 @@ private:
         };//end struct
             
 <<<<<<< HEAD
+<<<<<<< HEAD
             Node* head;         // pointer to first node in list
             int size;
+=======
+        Node* head;         // pointer to first node in list
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 =======
         Node* head;         // pointer to first node in list
 >>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
@@ -87,7 +91,11 @@ List<T>::List(){
 }//end List
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //---------------------destructor-----------------------------------------
+=======
+//--------------------------Destructor-----------------------------------
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 =======
 //--------------------------Destructor-----------------------------------
 >>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
@@ -99,6 +107,7 @@ List<T>::~List(){
     
 }//end ~List
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 //---------------------------copy-constructor-----------------------------
 template <typename T>
@@ -129,6 +138,8 @@ List<T>::List(const List& aList) : size(aList.size) {
 
 //---------------------buildList------------------------------------------
 =======
+=======
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //----------------------Copy Constructor---------------------------------
 //copy constructor, not done
 template <typename T>
@@ -136,6 +147,12 @@ List<T>::List(const List& copyData){
     List(copyData);
 }//end cpyCnstr
 
+<<<<<<< HEAD
+
+
+//---------------------------buildList-----------------------------------
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
+=======
 
 
 //---------------------------buildList-----------------------------------
@@ -218,6 +235,9 @@ bool List<T>::insert(T* dataPtr ){
 
 
 //----------------------------remove-------------------------------------
+<<<<<<< HEAD
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
+=======
 >>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //remove one Node from list, not done
 // I don't know if this is correct or not
@@ -234,7 +254,12 @@ bool List<T>::remove(T data, T* dataPtr){
     }//end remove
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //---------------------retrieve-------------------------------------------
+=======
+
+//----------------------------retrieve-----------------------------------
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 =======
 
 //----------------------------retrieve-----------------------------------
@@ -247,7 +272,13 @@ bool retrieve(T* ){
 }//end retrieve
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //---------------------merge----------------------------------------------
+=======
+
+
+//-----------------------------merge-------------------------------------
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 =======
 
 
@@ -262,7 +293,12 @@ void merge(const List& firstList, const List& secondList){
 }//end merge
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //---------------------intersect------------------------------------------
+=======
+
+//----------------------------intersect-----------------------------------
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 =======
 
 //----------------------------intersect-----------------------------------
@@ -288,7 +324,13 @@ bool List<T>::isEmpty() const
 }//end isEmpty
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //---------------------makeEmpty------------------------------------------
+=======
+
+
+//-------------------------makeEmpty-------------------------------------
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 =======
 
 
@@ -299,7 +341,13 @@ template <typename T>
 void makeEmpty(const List& ){}//end makeEmpty
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //---------------------operator=------------------------------------------
+=======
+
+
+//-------------------------operator=-------------------------------------
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 =======
 
 
@@ -319,6 +367,9 @@ List List::operator=(const List& secondList) const{
 
 
 //-------------------------operator==----------------------------------
+<<<<<<< HEAD
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
+=======
 >>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 //determine equality, not done
 template <typename T>
@@ -329,7 +380,12 @@ bool List::operator==(const List& secondList) const{
     }//end operator==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //---------------------operator!=-----------------------------------------
+=======
+
+//-------------------------operator!=-----------------------------------
+>>>>>>> 0def183bc6ddad6da47fb78593e6aecfe962a8e8
 =======
 
 //-------------------------operator!=-----------------------------------
