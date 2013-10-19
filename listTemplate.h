@@ -53,9 +53,9 @@ public:
         void intersect(const List&, const List&); //finds common elements in both; lists and creates new list
         bool isEmpty() const;               //check list for values
         void makeEmpty(const List& );       //empty out list, deallocate memory, not done
-        List::operator=(const List& secondList) const;  //assings one list to another, not done
-        bool List::operator==(const List& secondList) const;    //determine equality, not done
-        bool List::operator!=(const List& secondList) const;    //determine inequality, not done
+        List::operator=(const List&) const;  //assings one list to another, not done
+        bool List::operator==(const List&) const;    //determine equality
+        bool List::operator!=(const List&) const;    //determine inequality
         
         
 private:
@@ -402,23 +402,38 @@ List List::operator=(const List& secondList) const{
     //Enter data here
     
     }//end operator=
+
 //-------------------------operator==----------------------------------
 //determine equality, not done
 template <typename T>
-bool List::operator==(const List& secondList) const{
+bool List<T>::operator==(const List<T>& secondList) const{
+    Node* firstPtr = head;
+    Node* secondPtr = secondList->head;
+    bool equals = false;
     
-    //Enter data here
-    
-    }//end operator==
+    // assumptions: both lists are sorted
+    // while not empty or not end of lists
+    while(firstPtr != NULL || secondPtr != NULL){
+        // will only go into the if statement
+        // if both lists have the same data for each node
+        if (firstPtr->data == secondPtr->data){
+            equals = true;
+            firstPtr = firstPtr->next;
+            secondPtr = secondPtr->next;
+        }else
+            equals = false;
+        
+        return equals;
+    }
+}//end operator==
 
 //-------------------------operator!=-----------------------------------
 //determine inequality, not done
 template <typename T>
-bool List::operator!=(const List& secondList) const{
-    
-    //Enter data here
-    
-    }//end operator!=
+bool List<T>::operator!=(const List<T>& secondList) const{
+    // assumptions: overloaded operator== is working properly
+    return !(this == secondList);
+}//end operator!=
     
 //---------------------------getLength------------------------------------
 //size of the linked list
