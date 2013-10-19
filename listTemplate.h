@@ -411,6 +411,10 @@ bool List<T>::operator==(const List<T>& secondList) const{
     Node* secondPtr = secondList->head;
     bool equals = false;
     
+    // I'm not sure if this is correct?
+    if(this->size != secondList->size)
+        return false;
+    
     // assumptions: both lists are sorted
     // while not empty or not end of lists
     while(firstPtr != NULL || secondPtr != NULL){
