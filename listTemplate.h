@@ -309,7 +309,7 @@ bool List<T>::retrieve(T data, T* dataPtr){
 //-----------------------------merge-------------------------------------
 //combines two sorted lists into one list, not done
 template <typename T>
-void merge(const List& firstList, const List& secondList){
+void merge(const List<T>& firstList, const List<T>& secondList){
     
     //Enter data here
     
