@@ -5,7 +5,7 @@
            of objects
     @author Lance Cho
     @author Terence Schumacher
-    @version 1.1
+    @version 1.2
     
 */
 
@@ -45,13 +45,12 @@ public:
         List();                             //default constructor
         ~List();                            //destructor, not done
         List(const List& );                 //copy constructor, not done
-        void buildList(ifstream& );         //build list from data file
+        void buildList(ifstream&);         //build list from data file
         bool insert(T* );                   //insert one Node into list
         bool remove(T,T*);                   //remove one Node from list, not done
         bool retrieve(T,T*);                 //grab one Node from list, not done
-        void merge(const List& firstList, const List& secondList);  //combines two sorted lists into one list, not done
-        void intersect(const List& firstList, const List& secondList); //finds common elements in both
-                                                                       //lists and creates new list, not done
+        void merge(const List&, const List&);  //combines two sorted lists into one list, not done
+        void intersect(const List&, const List&); //finds common elements in both; lists and creates new list
         bool isEmpty() const;               //check list for values
         void makeEmpty(const List& );       //empty out list, deallocate memory, not done
         List::operator=(const List& secondList) const;  //assings one list to another, not done
@@ -318,12 +317,43 @@ void merge(const List& firstList, const List& secondList){
 
 //----------------------------intersect-----------------------------------
 //finds common elements in both
-//lists and creates new list, not done
+//lists and creates new list
 template <typename T>
-void intersect(const List& firstList, const List& secondList){
+void List<T>::intersect(const List<T>& firstList, const List<T>& secondList){
+    Node* firstPtr = firstList->head;   // traverses the first list
+    Node* secondPtr = secondList->head; // traverses the second list
+    Node* thirdPtr = head;        // traveses the this list
+    if(firstList->head == NULL || secondList->head == NULL)
+        return;
     
-    //Enter data here
+    // thirdPtr will now point to the end of the list
+    while(thirdPtr!=NULL){
+        thirdPtr = thirdPtr->next;
+    }
     
+    while(firstPtr!=NULL){
+        while(secondPtr!=NULL){
+            if(firstPtr->data != secondPtr->data){
+                secondPtr = secondPtr->next;
+            }else if(firstPtr->data == secondPtr->data){
+                thirdPtr = new Node;    // Does this make the end of the list point to the new node?
+                thirdPtr->data = new T(*firstList->data);
+                thirdPtr->next = NULL;
+                secondPtr = secondPtr->next;
+                // Will there be duplicate items in the second list?
+                // If not, we should break from the second while loop
+            }
+        }
+        // firstPtr moves to the next node of the first list
+        firstPtr = firstPtr->next;
+        // secondPtr points back to the head of the second list
+        secondPtr = secondList->head;
+    }
+    
+    
+    firstPtr = NULL;
+    secondPtr = NULL;
+    thirdPtr = NULL;    // Is this third one necessary?
 }//end intersect
 
 //-----------------------isEmpty------------------------------------------
