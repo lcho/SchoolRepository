@@ -340,20 +340,21 @@ bool List<T>::isEmpty() const
 //-------------------------makeEmpty-------------------------------------
 //empty out list, deallocate memory, not done
 template <typename T>
-void makeEmpty(const List& ){
+void List<T>::makeEmpty(const List<T>& aList){
     Node* current = aList.head->next;
     Node* previous = aList->head;
     
     if(aList.isEmpty())
         return;
     if(previous!=NULL && current==NULL){
+        delete previous->data;
         delete previous;
         previous = NULL;
         aList.head = NULL;
     }else{
         while (current != NULL){
             current = current->next;
-            previous = previous->next
+            previous = previous->next;
         }
         while(aList.size != ZERO){
             // not yet done
